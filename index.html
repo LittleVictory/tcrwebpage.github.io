@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="btns"></div>
+    <button id="re">撤回</button>
+    <div id="count"></div>
+</body>
+<script>
+    const btnsContainer = document.querySelector('#btns')
+    for(let i = 1; i <= 10; i++) {
+        const btn = document.createElement('button')
+        btn.innerText = i
+        btn.addEventListener('click', () => {
+            const countContainer = document.querySelector('#count')
+            countContainer.innerText += ' ' + i
+        })
+        btnsContainer.appendChild(btn)
+    }
+
+    document.querySelector('#re').addEventListener('click', () => {
+        const countContainer = document.querySelector('#count')
+        if (!countContainer.innerText) return
+        countContainer.innerText = countContainer.innerText.slice(0, countContainer.innerText.length - 2)
+    })
+</script>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #btns {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 420px;
+        margin-bottom: 24px;
+    }
+
+    #btns button {
+        width: 108px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    #btns button:not(:last-of-type) {
+        margin-right: 24px;
+    }
+
+    #re {
+        margin-bottom: 24px;
+        width: 108px;
+        height: 32px;
+        line-height: 32px;
+    }
+
+    #count {
+        font-size: 24px;
+    }
+</style>
+</html>
